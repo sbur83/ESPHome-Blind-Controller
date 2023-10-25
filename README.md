@@ -28,11 +28,11 @@ esphome:
 
 logger:
 ota:
-  password: !secret <YOUR SECRET HERE>
+  password: !secret ... #YOUR SECRET
 
 wifi:
-  ssid: !secret <YOUR SECRET HERE>
-  password: !secret <YOUR SECRET HERE>
+  ssid: !secret ... #YOUR SECRET
+  password: !secret ... #YOUR SECRET
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
