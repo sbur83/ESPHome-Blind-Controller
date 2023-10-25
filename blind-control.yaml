@@ -6,17 +6,16 @@ esphome:
 
 logger:
 ota:
-  password: !secret ESP_FallBack_Pass
+  password: !secret ....#YOUR SECRET
 
 wifi:
-  ssid: !secret MyFi_SSID
-  password: !secret MyFi_Pass
+  ssid: !secret ....#YOUR SECRET
+  password: !secret ....#YOUR SECRET
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "blinds_hotspot"
-    password: !secret ESP_FallBack_Pass
-
+    password: !secret ....#YOUR SECRET
 captive_portal:
     
 web_server:
@@ -24,7 +23,7 @@ web_server:
 
 api:
   encryption:
-    key: "IkzZCeNyrBjd1NszGeCrCMchb9U+RdA944lpmC0R0wM="
+    key: ".................................." #YOUR GENERATED KEY
   services:
     - service: control_blind
       variables:
