@@ -5,6 +5,8 @@
 ![Showoff](/blind_pictures/show_off_blind_conttrol_clipped.png "clipped image") ![Inside](/blind_pictures/inside_blind_control.png "clipped image inside") ![Backside](/blind_pictures/backside_blind_control.png "clipped backside inside")
 ### Parts needed:
 
+This is a work in progress; control is working with vertical blinds that do not require much pressure. I need to do some testing to determine the max pressure they are able to pull on the curtain chain and can guarantee this will not work with roller blinds that require high torqe. I plan to automate the limit set using buttons on the control and will work to make clear instructions as time permits.
+
 D1 Mini, ULN2003AN Stepper Motor Driver, 28BYJ-48 5V Stepper Motor, 2 x Tactile Buttons, 4-6 x M3x8 Countersunk Screws, 2 x M3 Washers and Nuts, 2 x M3*5*4.2 Knurled Brass Heat Set Inserts, 28AWG Wire.
 Tools: 3D Printer, Solder iron, solder, solder wick, hot glue, super glue.
 
