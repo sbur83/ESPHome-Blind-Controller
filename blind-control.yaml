@@ -1,40 +1,48 @@
+substitutions:
+  device_name: dining-blind #ENSURE THIS MATCHES .YAML FILE NAME IF DEVICE ALREADY CREATED
+  device_id: dining_blind #CREATE A UNIQUE ID FOR EACH DEVICE
+  friendly_name: Dining Blind #CREATE A UNIQUE FRIENDLY NAME FOR EACH DEVICE
+
 esphome:
-  name: dining-blind
-  friendly_name: dining-blind
+  name: ${device_name}
+  friendly_name: ${friendly_name}
   platform: ESP8266
   board: d1_mini
 
 logger:
 ota:
-  password: !secret ....#YOUR SECRET
+  password: !secret ........#YOUR SECRET
 
 wifi:
-  ssid: !secret ....#YOUR SECRET
-  password: !secret ....#YOUR SECRET
+  ssid: !secret ........#YOUR SECRET
+  password: !secret ........#YOUR SECRET
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "blinds_hotspot"
-    password: !secret ....#YOUR SECRET
+    ssid: "${device_id}_hotspot"
+    password: !secret ........#YOUR SECRET
+
 captive_portal:
-    
-web_server:
-  port: 80
+
+#REMOVE HASHES BELOW TO ENABLE WEB SERVER    
+#web_server:
+#  port: 80
 
 api:
   encryption:
-    key: ".................................." #YOUR GENERATED KEY
+    key: "************************************" #GENERATE AND INSERT ENCRYPTION KEY HERE
   services:
     - service: control_blind
       variables:
         target: int
       then:
         - stepper.set_target:
-            id: my_stepper
+            id: ${device_id}_stepper
             target: !lambda 'return target;'
         - sensor.template.publish:
-            id: position
+            id: ${device_id}_position
             state: !lambda 'return target;'
+            
 cover:
   - platform: template
     name: "My Blind"
@@ -43,39 +51,64 @@ cover:
     open_action:
       - delay: .05s
       - stepper.set_target:
-          id: my_stepper
+          id: ${device_id}_stepper
           target: 6050
       - sensor.template.publish:
-          id: position
-          state: !lambda return id(my_stepper).target_position;
+          id: ${device_id}_position
+          state: !lambda return id(${device_id}_stepper).target_position;
       - delay: 60s
     close_action:
       - delay: .05s
       - stepper.set_target:
-          id: my_stepper
+          id: ${device_id}_stepper
           target: 0
       - delay: 60s
       - sensor.template.publish:
-            id: position
-            state: !lambda return id(my_stepper).target_position;
+            id: ${device_id}_position
+            state: !lambda return id(${device_id}_stepper).target_position;
     stop_action:
       - stepper.set_target:
-          id: my_stepper
-          target: !lambda return id(my_stepper).current_position;
+          id: ${device_id}_stepper
+          target: !lambda return id(${device_id}_stepper).current_position;
       - sensor.template.publish:
-            id: position
-            state: !lambda return id(my_stepper).current_position;
+            id: ${device_id}_position
+            state: !lambda return id(${device_id}_stepper).current_position;
     optimistic: true
     assumed_state: true
  
 sensor:
   - platform: template
-    name: "My Blind Position"
-    id: position
- 
+    name: ${friendly_name} Position
+    id: ${device_id}_position
+  - platform: wifi_signal
+    name: ${friendly_name} WiFi Signal
+    id: wifi_signal_db
+    update_interval: 60s
+    entity_category: "diagnostic"
+  - platform: copy
+    source_id: wifi_signal_db
+    name: ${friendly_name} WiFi Signal Percent
+    filters:
+      - lambda: return min(max(2 * (x + 100.0), 0.0), 100.0);
+    unit_of_measurement: "Signal %"
+    entity_category: "diagnostic"
+  - platform: uptime
+    name: ${friendly_name} Uptime
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: ${friendly_name} IP Address
+    ssid:
+      name: ${friendly_name} SSID
+    bssid:
+      name: ${friendly_name} BSSID
+    mac_address:
+      name: ${friendly_name} Mac Address
+
 stepper:
   - platform: uln2003
-    id: my_stepper
+    id: ${device_id}_stepper
     pin_a: D1
     pin_b: D2
     pin_c: D5
@@ -84,6 +117,8 @@ stepper:
     sleep_when_done: true
 
 binary_sensor:
+  - platform: status
+    name: ${friendly_name} Status
   - platform: gpio
     pin:
       number: D3
@@ -91,7 +126,7 @@ binary_sensor:
       mode:
         input: TRUE
         pullup: TRUE
-    name: Open Button Sensor
+    name: ${friendly_name} Open Button
     filters:
       - delayed_on: 10ms
     on_multi_click:
@@ -102,12 +137,12 @@ binary_sensor:
         then:
           - delay: .05s
           - stepper.set_target:
-              id: my_stepper
+              id: ${device_id}_stepper
               target: 0
           - delay: 60s
           - sensor.template.publish:
-                id: position
-                state: !lambda return id(my_stepper).target_position;
+                id: ${device_id}_position
+                state: !lambda return id(${device_id}_stepper).target_position;
   - platform: gpio
     pin:
       number: D4
@@ -115,7 +150,7 @@ binary_sensor:
       mode:
         input: TRUE
         pullup: TRUE
-    name: Close Button Sensor
+    name: ${friendly_name} Close Button
     filters:
       - delayed_on: 10ms
     on_multi_click:
@@ -126,8 +161,8 @@ binary_sensor:
         then:
           - delay: .05s
           - stepper.set_target:
-              id: my_stepper
+              id: ${device_id}_stepper
               target: 6050
           - sensor.template.publish:
-              id: position
-              state: !lambda return id(my_stepper).target_position;
+              id: ${device_id}_position
+              state: !lambda return id(${device_id}_stepper).target_position;
