@@ -2,6 +2,7 @@
 
 *Rerquires Homeassistant with ESPHome addon*
 
+### NB:
 This is a work in progress; control is working with vertical blinds that do not require much pressure. I need to do some testing to determine the max pressure they are able to pull on the curtain chain and can guarantee this will not work with roller blinds that require high torqe. I plan to automate the limit set using buttons on the control and will work to make clear instructions as time permits.
 
 ![Showoff](/blind_pictures/show_off_blind_conttrol_clipped.png "clipped image") ![Inside](/blind_pictures/inside_blind_control.png "clipped image inside") ![Backside](/blind_pictures/backside_blind_control.png "clipped backside inside")
