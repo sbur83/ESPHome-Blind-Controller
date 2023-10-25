@@ -1,6 +1,7 @@
 # ESPHome-Blind-Controller
 
-*Rerquires Homeassistant with ESPHome addon
+*Rerquires Homeassistant with ESPHome addon*
+
 DIY SMART BLIND
 Parts needed: D1 Mini, ULN2003AN Stepper Motor Driver, 28BYJ-48 5V Stepper Motor, 2 x Tactile Buttons, 4-6 x M3x8 Countersunk Screws, 2 x M3 Washers and Nuts, 2 x M3*5*4.2 Knurled Brass Heat Set Inserts, 28AWG Wire.
 Tools: 3D Printer, Solder iron, solder, solder wick, hot glue, super glue.
