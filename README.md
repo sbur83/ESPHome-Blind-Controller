@@ -156,5 +156,8 @@ binary_sensor:
               state: !lambda return id(my_stepper).target_position;
 ```
 
+### Credits
+This .yaml is a variation but largely taken from Lewis @ Everything Smart Home: https://everythingsmarthome.co.uk/diy-motorised-smart-blinds/
 
+The chain cog was downloaded from metehan.demircioglu and modified in Fusion360: https://www.autodesk.com/community/gallery/project/159243/smart-blind-chasis
 
