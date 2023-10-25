@@ -3,4 +3,5 @@
 2. Reposition .stl files
 3. Countersink backplate holes, rethink/ add mount bracket
 4. Add pictures to readme
-5. Make video?
+5. Build on instructions
+6. Make video?
