@@ -5,7 +5,7 @@ substitutions:
 
 esphome:
   name: ${device_name}
-  friendly_name: ${friendly_name}
+  friendly_name: ${friendly_name}_node
   platform: ESP8266
   board: d1_mini
 
@@ -45,7 +45,7 @@ api:
             
 cover:
   - platform: template
-    name: "My Blind"
+    name: "${friendly_name}"
     id: ${device_id}_cover_component
     device_class: blind
     open_action:
