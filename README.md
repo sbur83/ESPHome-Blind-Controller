@@ -2,11 +2,14 @@
 
 *Rerquires Homeassistant with ESPHome addon*
 
-Parts needed: D1 Mini, ULN2003AN Stepper Motor Driver, 28BYJ-48 5V Stepper Motor, 2 x Tactile Buttons, 4-6 x M3x8 Countersunk Screws, 2 x M3 Washers and Nuts, 2 x M3*5*4.2 Knurled Brass Heat Set Inserts, 28AWG Wire.
+###Parts needed:
+
+D1 Mini, ULN2003AN Stepper Motor Driver, 28BYJ-48 5V Stepper Motor, 2 x Tactile Buttons, 4-6 x M3x8 Countersunk Screws, 2 x M3 Washers and Nuts, 2 x M3*5*4.2 Knurled Brass Heat Set Inserts, 28AWG Wire.
 Tools: 3D Printer, Solder iron, solder, solder wick, hot glue, super glue.
 
 
-INSTRUCTIONS:
+###INSTRUCTIONS:
+
 1. 3D print .stl files.
 2. Remove the blue cap from the stepper motor and use a heated solder iron to remove the wire loom from the stepper motor.
 3. Lift the plastic base on ULN2003 PCB header pins; heat pins with solder iron, when solder is molten gently remove pins from: +5v, -0v, IN1, IN2, IN3, IN4.
