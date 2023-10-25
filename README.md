@@ -29,3 +29,4 @@ This .yaml is a variation but largely taken from Lewis @ Everything Smart Home: 
 
 The chain cog was downloaded from metehan.demircioglu and modified in Fusion360: https://www.autodesk.com/community/gallery/project/159243/smart-blind-chasis
 
+:heart: ESPHome and Home Assistant teams and community :heart:
