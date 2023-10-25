@@ -46,7 +46,7 @@ api:
 cover:
   - platform: template
     name: "My Blind"
-    id: my_blind
+    id: ${device_id}_cover_component
     device_class: blind
     open_action:
       - delay: .05s
