@@ -28,11 +28,11 @@ esphome:
 
 logger:
 ota:
-  password: !secret ESP_FallBack_Pass
+  password: !secret <YOUR SECRET HERE>
 
 wifi:
-  ssid: !secret MyFi_SSID
-  password: !secret MyFi_Pass
+  ssid: !secret <YOUR SECRET HERE>
+  password: !secret <YOUR SECRET HERE>
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
@@ -41,12 +41,12 @@ wifi:
 
 captive_portal:
     
-web_server:
-  port: 80
+#web_server:
+#  port: 80
 
 api:
   encryption:
-    key: "IkzZCeNyrBjd1NszGeCrCMchb9U+RdA944lpmC0R0wM="
+    key: "<GENERATED ENCRYPTION KEY HERE"
   services:
     - service: control_blind
       variables:
